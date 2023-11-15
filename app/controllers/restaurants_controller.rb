@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: %i[ show edit update destroy ]
+  before_action :set_restaurant, only: %i[ show edit update destroy chef ]
 
   # GET /restaurants
   def index
@@ -16,8 +16,7 @@ class RestaurantsController < ApplicationController
   end
 
   # GET /restaurants/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /restaurants
   def create
@@ -49,6 +48,9 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.where(rating: 5)
   end
 
+  def chef
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
@@ -57,6 +59,6 @@ class RestaurantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def restaurant_params
-      params.require(:restaurant).permit(:name, :address, :rating, :completed)
+      params.require(:restaurant).permit(:name, :address, :rating, :chef)
     end
 end

@@ -1,37 +1,8 @@
-<%= form_with(model: restaurant) do |form| %>
-  <% if restaurant.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
+<%= simple_form_for @restaurant do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :rating %>
+  <%= f.input :chef %>
 
-      <ul>
-        <% restaurant.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :address, style: "display: block" %>
-    <%= form.text_field :address %>
-  </div>
-
-  <div>
-    <%= form.label :rating, style: "display: block" %>
-    <%= form.number_field :rating %>
-  </div>
-
-  <div>
-    <%= form.label :completed, style: "display: block" %>
-    <%= form.check_box :completed %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+  <%= f.submit "Create Resta", class: 'btn btn-primary' %>
 <% end %>
